@@ -28,5 +28,19 @@ namespace WebApplication1.Services
             return _context.Team.Where(e => e.IdTeam == id).Include(e => e.Organization);
         }
 
+        public async Task CreateAsync<T>(T entity) where T : class
+        {
+            await _context.Set<T>().AddAsync(entity);
+        }
+
+        public IQueryable<Member> GetMemberById(int id)
+        {
+            return _context.Member.Where(e => e.IdMember == id).Include(e=>e.Organization);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

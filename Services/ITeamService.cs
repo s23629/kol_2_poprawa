@@ -10,6 +10,9 @@ namespace WebApplication1.Services
     {
         IQueryable<Team> GetTeam(int id);
         IQueryable<Team> GetTeamById(int id);
-       
+        Task CreateAsync<T>(T entity) where T : class;
+        IQueryable<Member> GetMemberById(int id);
+        Task SaveChangesAsync();
+
     }
 }
